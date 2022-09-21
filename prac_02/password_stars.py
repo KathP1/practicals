@@ -8,11 +8,20 @@ Print asterisks as long as the word
 
 def main():
     minimum_length = 8
+    password = get_password(minimum_length)
+    print_asterisks(password)
+
+
+def print_asterisks(password):
+    print('*' * len(password))
+
+
+def get_password(minimum_length):
     password = input("Password: ")
     while len(password) < minimum_length:
         print("Password must be a minimum of ", minimum_length, "characters.")
         password = input("Password: ")
-    print('*' * len(password))
+    return password
 
 
 main()
