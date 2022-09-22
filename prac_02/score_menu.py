@@ -10,6 +10,7 @@ from math import floor
 
 
 def main():
+    """Get score, print result, print stars"""
     score = -1  #If option P is selected before G this will trigger an error message
     MENU = """G - get score
 P - print result
@@ -34,11 +35,13 @@ Q - quit
 
 
 def print_stars(score):
+    """Print as many stars as the score. Round down to integer"""
     for i in range(floor(score)):
         print('*', end='')
 
 
 def score_status(score):
+    """Determine the status of the score"""
     if 90 <= score <= 100:
         print("A score of", score, "is Excellent")
     elif 50 <= score < 90:
@@ -50,6 +53,7 @@ def score_status(score):
 
 
 def get_valid_score():
+    """Get score and error check the score"""
     score = float(input("Enter score: "))
     while score == "" or score < 0 or score > 100:
         print("Invalid score")
