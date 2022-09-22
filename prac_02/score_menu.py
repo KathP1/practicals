@@ -5,6 +5,8 @@ P - print result
 S - print as many stars as the score
 Q - quit
 """
+
+
 def main():
     MENU = """G - get score
 P - print result
@@ -15,26 +17,39 @@ Q - quit
     choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "G":
-            score = int(input("Enter score: "))
-            while score == "" or score < 0 or score > 100:
-                print("Invalid score")
-                score = int(input("Enter score: "))
+            score: int = get_valid_score()
         elif choice == "P":
-            if 90 <= score <= 100:
-                print("A score of", score, "is Excellent")
-            elif 50 <= score < 90:
-                print("A score of", score, "is Passable")
-            else:
-                print("A score of", score, "is Bad")
+            score_status(score)
         elif choice == "S":
-            for i in range(score):
-                print('*', end='')
+            print_stars(score)
         else:
             print("Invalid choice")
         print("\n")
         print(MENU)
         choice = input(">>> ").upper()
     print("Farewell")
+
+
+def print_stars(score):
+    for i in range(score):
+        print('*', end='')
+
+
+def score_status(score):
+    if 90 <= score <= 100:
+        print("A score of", score, "is Excellent")
+    elif 50 <= score < 90:
+        print("A score of", score, "is Passable")
+    else:
+        print("A score of", score, "is Bad")
+
+
+def get_valid_score():
+    score = int(input("Enter score: "))
+    while score == "" or score < 0 or score > 100:
+        print("Invalid score")
+        score = int(input("Enter score: "))
+    return score
 
 
 main()
