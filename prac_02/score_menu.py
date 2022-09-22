@@ -56,7 +56,7 @@ def score_status(score):
 def get_valid_score():
     """Get score and error check the score"""
     score = float(input("Enter score: "))
-    while score == "" or score < 0 or score > 100:
+    while score < 0 or score > 100:
         print("Invalid score")
         score = float(input("Enter score: "))
     return score

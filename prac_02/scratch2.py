@@ -48,7 +48,9 @@ def score_status(score):
 
 def get_valid_score():
     score = int(input("Enter score: "))
-    while score == "" or score < 0 or score > 100:
+    while score == "":
+        print('Invalid Input')
+    while score < 0 or score > 100:
         print("Invalid score")
         score = int(input("Enter score: "))
     return score
