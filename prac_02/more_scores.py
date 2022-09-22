@@ -6,20 +6,22 @@ import random
 
 
 def main():
-    """Print test results to text file"""
+    """Write test results to text file"""
     number_of_scores = int(input("Number of scores: "))
     while number_of_scores < 0:
         print("Invalid number of scores!")
         number_of_scores = int(input("Number of scores: "))
     openfile = open('results.txt', 'w')
-    for i in range(number_of_scores):
-        score = random.randint(0, 100)
-        x = str(score)
-        # print(score, "is", score_status(score))
-        openfile.write(str(score) + " is " + score_status(score) + "\n")
+    write_result_to_file(number_of_scores, openfile)
     openfile.close()
     results_file = open('results.txt', 'r')
     print(results_file.read())
+
+
+def write_result_to_file(number_of_scores, openfile):
+    for i in range(number_of_scores):
+        score = random.randint(0, 100)
+        openfile.write(str(score) + " is " + score_status(score) + "\n")
 
 
 def score_status(score):
