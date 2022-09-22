@@ -10,6 +10,7 @@ from math import floor
 
 
 def main():
+    score = -1  #If option P is selected before G this will trigger an error message
     MENU = """G - get score
 P - print result
 S - print as many stars as the score
@@ -42,8 +43,10 @@ def score_status(score):
         print("A score of", score, "is Excellent")
     elif 50 <= score < 90:
         print("A score of", score, "is Passable")
-    else:
+    elif 0 <= score < 50:
         print("A score of", score, "is Bad")
+    else:
+        print("Get score first")
 
 
 def get_valid_score():
