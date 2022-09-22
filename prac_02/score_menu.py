@@ -6,6 +6,8 @@ S - print as many stars as the score
 Q - quit
 """
 
+from math import floor
+
 
 def main():
     MENU = """G - get score
@@ -17,7 +19,7 @@ Q - quit
     choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "G":
-            score: int = get_valid_score()
+            score: float = get_valid_score()
         elif choice == "P":
             score_status(score)
         elif choice == "S":
@@ -31,7 +33,7 @@ Q - quit
 
 
 def print_stars(score):
-    for i in range(score):
+    for i in range(floor(score)):
         print('*', end='')
 
 
@@ -45,10 +47,10 @@ def score_status(score):
 
 
 def get_valid_score():
-    score = int(input("Enter score: "))
+    score = float(input("Enter score: "))
     while score == "" or score < 0 or score > 100:
         print("Invalid score")
-        score = int(input("Enter score: "))
+        score = float(input("Enter score: "))
     return score
 
 
