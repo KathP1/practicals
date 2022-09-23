@@ -37,23 +37,29 @@ def main():
 
 def print_stars(score):
     """Print as many stars as the score. Round down to integer"""
-    for i in range(floor(score)):
-        print('*', end='')
+    try:
+        if score:
+            for i in range(floor(score)):
+               print('*', end='')
+        if not score:
+            raise ValueError()
+    except ValueError:
+        print ("Enter score first")
 
 
 def score_status(score):
     """Determine the status of the score"""
     try:
-        if score:
+        if score:  # If score has been entered as a float
             if 90 <= score <= 100:
-               print("A score of", score, "is Excellent")
+                print("A score of", score, "is Excellent")
             elif 50 <= score < 90:
-               print("A score of", score, "is Passable")
+                print("A score of", score, "is Passable")
             elif 0 <= score < 50:
-               print("A score of", score, "is Bad")
+                print("A score of", score, "is Bad")
             else:
                 print("Get score first")
-        if not score:
+        if not score:  # If score has not been entered as a float
             raise ValueError()
     except ValueError:
         print("Get score first")
