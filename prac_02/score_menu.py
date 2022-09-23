@@ -17,7 +17,7 @@ Q - quit
 
 def main():
     """Get score, print result, print stars"""
-    score = -1  # This will trigger an error message if P is selected before G
+    score = -1  # Trigger an error message if P is selected before G
     print(MENU)
     choice = input(">>> ").upper()
     while choice != "Q":
@@ -55,11 +55,17 @@ def score_status(score):
 
 def get_valid_score():
     """Get score and error check the score"""
-    score = float(input("Enter score: "))
-    while score < 0 or score > 100:
-        print("Invalid score")
-        score = float(input("Enter score: "))
-    return score
+    try:
+        score = float(input("Enter score: "))  # raw_input in Python 2.x
+        if score:  # If score is entered as a float
+            while score < 0 or score > 100:
+                print("Invalid score")
+                score = float(input("Enter score: "))
+            return score
+        if not score:  # if score is not entered as a float or empty
+            raise ValueError()
+    except ValueError:
+        print("Invalid value")
 
 
 main()
