@@ -1,5 +1,5 @@
 """
-Program to determine score status and print to txt file
+Program to determine score status and write to txt file
 """
 
 import random
