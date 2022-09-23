@@ -21,9 +21,9 @@ def main():
         proportion_of_deaths = random.randint(5, 25) / 100
         deaths = deaths + (population * proportion_of_deaths)
         population = population + births - deaths
-        print(births, "gophers were born.", deaths, "died."
-        "\nPopulation:", population,
-        "\nYear", i+1,"\n")
+        print("{:.0f}".format(births), "gophers were born.", "{:.0f}".format(deaths), "died."
+              "\nPopulation: {:.0f}".format(population),
+              "\nYear", i + 1, "\n")
 
 
 main()
