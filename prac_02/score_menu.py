@@ -43,13 +43,19 @@ def print_stars(score):
 
 def score_status(score):
     """Determine the status of the score"""
-    if 90 <= score <= 100:
-        print("A score of", score, "is Excellent")
-    elif 50 <= score < 90:
-        print("A score of", score, "is Passable")
-    elif 0 <= score < 50:
-        print("A score of", score, "is Bad")
-    else:
+    try:
+        if score:
+            if 90 <= score <= 100:
+               print("A score of", score, "is Excellent")
+            elif 50 <= score < 90:
+               print("A score of", score, "is Passable")
+            elif 0 <= score < 50:
+               print("A score of", score, "is Bad")
+            else:
+                print("Get score first")
+        if not score:
+            raise ValueError()
+    except ValueError:
         print("Get score first")
 
 
