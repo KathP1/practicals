@@ -14,11 +14,14 @@ MAX_DECREASE = 0.05  # 5%
 MIN_PRICE = 1.00
 MAX_PRICE = 100.0
 INITIAL_PRICE = 10.0
+OUTPUT_FILE = 'daily_price.txt'
 
 price = INITIAL_PRICE
-print("Starting price: ${:,.2f}".format(price))
+# print("Starting price: ${:,.2f}".format(price))
 counter = 0
 
+out_file = open(OUTPUT_FILE, 'w')
+print("Starting price: ${:,.2f}".format(price), file=out_file)
 while price >= MIN_PRICE and price <= MAX_PRICE:
     price_change = 0
     # generate a random integer of 1 or 2
@@ -36,5 +39,5 @@ while price >= MIN_PRICE and price <= MAX_PRICE:
 
     day_number = counter
     price *= (1 + price_change)
-    print(f"On day {day_number} price is ${price:,.2f}")
-
+    print(f"On day {day_number} price is ${price:,.2f}", file=out_file)
+out_file.close()
