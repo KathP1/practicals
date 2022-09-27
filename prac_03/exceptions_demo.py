@@ -16,3 +16,17 @@ except ValueError:
 except ZeroDivisionError:
     print("Cannot divide by zero!")
 print("Finished.")
+
+# 1. When will a ValueError occur?
+# When anything other than an integer is entered by the user
+# at line 10 (numerator) or 11 (denominator)
+
+# 2. When will a ZeroDivisionError occur?
+# When user enters a 0 at line 11 (denominator)
+
+# 3. Could you change the code to avoid the possibility of a
+# ZeroDivisionError?
+# Use an if statement to tell the user not to enter a )
+# and to prompt them to reenter the denominator
+
+
