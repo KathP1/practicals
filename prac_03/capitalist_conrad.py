@@ -17,6 +17,7 @@ INITIAL_PRICE = 10.0
 
 price = INITIAL_PRICE
 print("Starting price: ${:,.2f}".format(price))
+counter = 0
 
 while price >= MIN_PRICE and price <= MAX_PRICE:
     price_change = 0
@@ -26,10 +27,14 @@ while price >= MIN_PRICE and price <= MAX_PRICE:
         # generate a random floating-point number
         # between 0 and MAX_INCREASE
         price_change = random.uniform(0, MAX_INCREASE)
+        counter += 1
     else:
         # generate a random floating-point number
         # between negative MAX_DECREASE and 0
         price_change = random.uniform(-MAX_DECREASE, 0)
+        counter += 1
 
+    day = counter
+    print(day)
     price *= (1 + price_change)
     print("${:,.2f}".format(price))
