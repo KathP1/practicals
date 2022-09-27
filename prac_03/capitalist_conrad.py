@@ -16,7 +16,7 @@ MAX_PRICE = 1000.0
 INITIAL_PRICE = 10.0
 
 price = INITIAL_PRICE
-print("${:,.2f}".format(price))
+print("Starting price: ${:,.2f}".format(price))
 
 while price >= MIN_PRICE and price <= MAX_PRICE:
     price_change = 0
