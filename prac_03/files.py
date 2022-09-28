@@ -29,16 +29,20 @@ Write code that opens "numbers.txt"
 reads only the first two numbers and adds them together
 then prints the result, which should be 59"""
 
+"""Create numbers.txt file"""
 out_file = open("numbers.txt", 'w')
 print(f"17\n 42\n 400", file=out_file)
 out_file.close()
 
+"""Add the first 2 numbers"""
 in_file = open("numbers.txt", 'r')
 number_1 = int(in_file.readline())
 number_2 = int(in_file.readline())
 print(number_1 + number_2)
 in_file.close()
 
+
+"""Print the total of all numbers"""
 in_file = open("numbers.txt", 'r')
 total = 0
 for line in in_file:
