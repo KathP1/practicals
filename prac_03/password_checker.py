@@ -20,6 +20,11 @@ def main():
     if SPECIAL_CHARS_REQUIRED:
         print("\tand 1 or more special characters: ", SPECIAL_CHARACTERS)
     password = input("> ")
+    count_of_lowercase = 0
+    for character in password:
+        if character.islower():
+            count_of_lowercase += 1
+    print(count_of_lowercase)
     while not is_valid_password(password):
         print("Invalid password!")
         password = input("> ")
