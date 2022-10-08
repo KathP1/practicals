@@ -9,6 +9,11 @@ FILENAME = "subject_data.txt"
 def main():
     data = get_data()
     # print(data)
+    display_subject_details(data)
+
+
+def display_subject_details(data):
+    """Display the subject details in a sentence"""
     for subject_details in data:
         print(f"{subject_details[0]} is taught by {subject_details[1]} and has {subject_details[2]} students")
 
@@ -27,7 +32,7 @@ def get_data():
         # print(parts)  # See if that worked
         subject_data.append(parts)
         # print(subject_data)
-        print("----------")
+        # print("----------")
     input_file.close()
     return subject_data
 
