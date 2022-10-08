@@ -16,4 +16,5 @@ for i in range(number_of_quick_picks):
         if number in quick_pick:
             number = random.randint(1, 45)
         quick_pick.append(number)
+    quick_pick.sort()
     print(quick_pick)
