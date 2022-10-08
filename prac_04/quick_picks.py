@@ -17,6 +17,4 @@ for i in range(number_of_quick_picks):
             number = random.randint(1, 45)
         quick_pick.append(number)
     quick_pick.sort()
-    print(quick_pick)
-    z = [number for number in quick_pick]
-    print(', '.join(f"{z}"))
+    print(', '.join(f"{number}" for number in quick_pick))
