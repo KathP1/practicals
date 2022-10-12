@@ -1,7 +1,7 @@
 """
 Word Occurrences
 Estimate: 45 minutes
-Actual:
+Actual: 1 hour
 """
 
 text = "this is a collection of words of nice words this is a fun thing it is"
