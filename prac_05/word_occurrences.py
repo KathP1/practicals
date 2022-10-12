@@ -16,9 +16,10 @@ for word in words:
         word_to_count[word] = 1
 print(word_to_count)
 words = list(word_to_count.keys())
+words.sort()
 print(words)
-for word, count in word_to_count.items():
-    print(f"{word}: {count}")
+for word in words:
+    print(f"{word}: {word_to_count[word]}")
 
 
 
