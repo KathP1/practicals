@@ -13,7 +13,7 @@ def main():
     while email != "":
         name = get_name_from_email(email)
         name_is_correct = input(f"Is your name {name}? (Y/n) ").lower()
-        if name_is_correct == 'n':
+        if name_is_correct != 'y' and name_is_correct != "":
             name = input("Name: ")
         email_to_name[email] = name
         email = input("Email: ")
