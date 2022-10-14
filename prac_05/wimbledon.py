@@ -24,21 +24,13 @@ def main():
     countries = set()  # empty set to store a set of unique country names
     for record in records:
         countries.add(record[1])  # Add Country (index 1) to the list
-    print(countries, type(countries))
+    print(sorted(countries), type(countries))
     number_of_countries = len(countries)
     print("Wimbeldon Champions:")
     for champion in champion_to_count:
         print(f"{champion}: {champion_to_count[champion]}")
     print(f"These {number_of_countries} countries have won Wimbledon")
-    print(', '.join(countries))
-    # for champion in records:
-    #     try:
-    #         champion_to_count[champion] += 1
-    #     except KeyError:
-    #         champion_to_count = 1
-    # print(champion_to_count)
-    # count_champions
-    # list_of_countries
+    print(', '.join(sorted(countries)))
 
 
 def load_data(filename):
