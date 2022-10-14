@@ -12,6 +12,11 @@ def main():
     records = load_data(FILENAME)
     print(records)
     champion_to_count, countries, number_of_countries = process_records(records)
+    display_results(champion_to_count, countries, number_of_countries)
+
+
+def display_results(champion_to_count, countries, number_of_countries):
+    """Displays champions and number of wins,  and sorts and displays winning countries"""
     print("Wimbeldon Champions:")
     for champion in champion_to_count:
         print(f"{champion}: {champion_to_count[champion]}")
