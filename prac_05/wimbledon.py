@@ -7,14 +7,14 @@ Actual: 2.5 hours
 FILENAME = 'wimbledon.csv'
 
 def main():
-    """Read data and display champions and countries that have won Wimbeldon"""
+    """Read data and display champions and countries that have won Wimbledon"""
     records = load_data(FILENAME)
     champion_to_count, countries, number_of_countries = process_records(records)
     display_results(champion_to_count, countries, number_of_countries)
 
 
 def display_results(champion_to_count, countries, number_of_countries):
-    """Display champions and number of wins,  and sorts and displays winning countries"""
+    """Display champions and number of wins,  and sort and display winning countries"""
     print("Wimbeldon Champions:")
     for champion in champion_to_count:
         print(f"{champion}: {champion_to_count[champion]}")

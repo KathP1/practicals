@@ -3,6 +3,7 @@ CP1404/CP5632 Practical
 hexadecimal colour codes in a dictionary
 """
 
+"""Display the hexadecimal code for a colour"""
 COLOUR_TO_CODE = {"Red": "#FF0000", "Orange": "#FFA500", "Yellow": "#FFFF00", "Green": "#00FF00",
                   "Blue": "#0000FF", "Indigo": "#4B0082", "Violet": "#8F00FF"}
 for colour in COLOUR_TO_CODE:
