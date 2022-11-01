@@ -8,7 +8,7 @@ Actual time: 1 hour
 class ProgrammingLanguage:
     """Information about programming language"""
 
-    def __init__(self, name="", typing="", reflection="", year=0):
+    def __init__(self, name, typing, reflection, year):
         """Initialise a ProgramingLanguage instance"""
         self.name = name
         self.typing = typing
