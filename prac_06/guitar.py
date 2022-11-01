@@ -1,7 +1,7 @@
 """
 A class to store information for a guitar
 Estimated time: 90 minutes
-Time taken:
+Time taken: 30 minutes
 """
 from datetime import date
 
