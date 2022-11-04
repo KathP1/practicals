@@ -34,6 +34,9 @@ def main():
     # Close the file as soon as we've finished reading it
     in_file.close()
 
+    language = ProgrammingLanguage("Eiffel", "Static", True, 1986)
+    languages.append(language)
+
     # Loop through and display all languages (using their str method)
     for language in languages:
         print(language)
