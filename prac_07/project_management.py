@@ -4,6 +4,7 @@ Time Estimate:5hrs
 Actual time:
 """
 
+FILENAME = "projects.txt"
 MENU_STRING = """- (L)oad projects  
 - (S)ave projects  
 - (D)isplay projects  
@@ -14,6 +15,7 @@ MENU_STRING = """- (L)oad projects
 
 
 def main():
+    projects = load_projects(FILENAME)
     print(MENU_STRING)
     choice = input(">>> ").upper()
     while choice != "Q":
@@ -33,6 +35,22 @@ def main():
             print("Invalid menu choice")
         print(MENU_STRING)
         choice = input(">>> ").upper()
+
+
+def load_projects(filename):
+    projects = []
+    in_file = open(filename, 'r')
+    in_file.readline()
+    for line in in_file:
+        line = line.strip()
+        parts = line.split("\t")
+        # print(parts)  #checking
+        parts[2] = int(parts[2])
+        parts[3] = float(parts[3])
+        parts[4] = int(parts[4])
+        # print(parts) #checking
+
+
 
 
 main()
