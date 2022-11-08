@@ -4,6 +4,8 @@ Time Estimate:5hrs
 Actual time:
 """
 
+from prac_07.project import Project
+
 FILENAME = "projects.txt"
 MENU_STRING = """- (L)oad projects  
 - (S)ave projects  
@@ -49,8 +51,10 @@ def load_projects(filename):
         parts[3] = float(parts[3])
         parts[4] = int(parts[4])
         # print(parts) #checking
-
-
+        project = Project(parts[0], parts[1], parts[2], parts[3], parts[4])
+        print(project)
+        projects.append(project)
+    in_file.close()
 
 
 main()
