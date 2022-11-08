@@ -34,7 +34,8 @@ def main():
         elif choice == "F":
             pass
         elif choice == "A":
-            pass
+            print("Let's add a new project")
+            add_new_project(projects)
         elif choice == "U":
             pass
         else:
@@ -85,6 +86,17 @@ def display_projects(projects):
     print("Completed projects:")
     for project in complete_projects:
         print(project)
+
+
+def add_new_project(projects):
+    """Prompt user for project details and add to the list of projects"""
+    name = input("Name: ")
+    start_date = input("Start date (dd/mm/yy): ")
+    priority = int(input("Priority: "))
+    cost_estimate = float(input("Cost estimate: $"))
+    percent_complete = int(input("Percent complete: "))
+    new_project = Project(name, start_date, priority, cost_estimate, percent_complete)
+    projects.append(new_project)
 
 
 main()
