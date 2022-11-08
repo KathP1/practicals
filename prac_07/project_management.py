@@ -22,7 +22,8 @@ def main():
     choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "L":
-            pass
+            filename = input("Projects file to load: ")
+            projects = load_projects(filename)
         elif choice == "S":
             pass
         elif choice == "D":
@@ -52,7 +53,7 @@ def load_projects(filename):
         parts[4] = int(parts[4])
         # print(parts) #checking
         project = Project(parts[0], parts[1], parts[2], parts[3], parts[4])
-        print(project)
+        # print(project) #checking
         projects.append(project)
     in_file.close()
 
