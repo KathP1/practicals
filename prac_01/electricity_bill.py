@@ -3,7 +3,7 @@
 2. Modify the bill estimator by asking the user to choose which tariff they are using
 """
 
-"""Electricity Bill Estimator"""
+# """Electricity Bill Estimator"""
 # Cents_per_KWh = float(input("Enter cents per kWh: "))
 # Number_of_KWh_used_per_day = float(input("Enter daily use in KWh: "))
 # Number_of_days_in_billing_period = int(input("Enter number of billing days: "))
@@ -23,4 +23,5 @@ if tariff_choice == 11:
 else:
     Estimated_bill = TARIFF_31 * Number_of_KWh_used_per_day * Number_of_days_in_billing_period
 
-print("Estimated bill: ${:.2f}".format(Estimated_bill))
+# print("Estimated bill: ${:.2f}".format(Estimated_bill))
+print(f"Estimated bill: ${Estimated_bill:.2f}")
