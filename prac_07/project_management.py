@@ -1,5 +1,6 @@
 """
 CP1404 - Prac 07 - Project Management
+A program to load and save a data file and use a list of Project objects
 Time Estimate:5hrs
 Actual time:
 """
@@ -68,7 +69,6 @@ def load_projects(filename):
             # print(project.start_date) #checking
             # print(project2.start_date) #checking
             projects.append(project)
-        # in_file.close()
     return projects
 
 
@@ -81,7 +81,6 @@ def save_projects(save_file, projects):
         out_file.write('\n')
         for project in projects:
             print(repr(project), file=out_file)
-    # out_file.close()
 
 
 def display_projects(projects):
@@ -99,38 +98,73 @@ def display_projects(projects):
 
 
 def display_filtered(projects):
-    """Gets a threshold date from the user and displays projects with start date >= to that date"""
-    date_string = input("Show projects that start after date (dd/mm/yyyy): ")
-    filter_from_date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
-    filtered_projects = [project for project in projects if project.start_date >= filter_from_date]
-    filtered_projects.sort(key=attrgetter("start_date"))
-    for project in filtered_projects:
-        print(project)
+    """Get a date from the user and display projects starting on or after that date"""
+    is_valid_input = False
+    while not is_valid_input:
+        try:
+            date_string = input("Show projects that start after date (dd/mm/yyyy): ")
+            filter_date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+            filtered = [project for project in projects if project.start_date >= filter_date]
+            filtered.sort(key=attrgetter("start_date"))
+            for project in filtered:
+                print(project)
+            is_valid_input = True
+        except ValueError:
+            print("Invalid input; enter a date in the format specified")
 
 
 def add_new_project(projects):
     """Prompt user for project details and add to the list of projects"""
     name = input("Name: ")
     start_date = input("Start date (dd/mm/yy): ")
-    priority = int(input("Priority: "))
+    priority = get_valid_number("Priority: ")
+    # priority = int(input("Priority: "))
     cost_estimate = float(input("Cost estimate: $"))
-    percent_complete = int(input("Percent complete: "))
+    percent_complete = get_valid_number("Percent complete: ")
+    # percent_complete = int(input("Percent complete: "))
     new_project = Project(name, start_date, priority, cost_estimate, percent_complete)
     projects.append(new_project)
 
 
 def update_project(projects):
     """Get index of project and update completion percent &/or priority"""
+    chosen_index = choose_project(projects)
+    # print(projects[chosen_index])
+    new_percentage = input("New Percentage: ")
+    if new_percentage.isdigit():
+        projects[chosen_index].completion_percentage = int(new_percentage)
+    new_priority = input("New Priority: ")
+    if new_priority.isdigit():
+        projects[chosen_index].priority = int(new_priority)
+
+
+def choose_project(projects):
+    """Get index of project to update"""
     for i, project in enumerate(projects):
         print(f"{i} {project}")
-    chosen_index = int(input("Project choice: "))
-    print(projects[chosen_index])
-    new_percentage = input("New Percentage: ")
-    new_priority = input("New Priority: ")
-    if new_percentage != "":
-        projects[chosen_index].completion_percentage = int(new_percentage)
-    if new_priority != "":
-        projects[chosen_index].priority = int(new_priority)
+    is_valid_input = False
+    while not is_valid_input:
+        try:
+            chosen_index = get_valid_number("Project choice: ")
+            print(projects[chosen_index])
+            is_valid_input = True
+            return chosen_index
+        except IndexError:
+            print("Invalid project number")
+        # except ValueError:
+        #     print("Please enter an integer")
+
+
+def get_valid_number(user_prompt):
+    """Ask for a number and check if it is valid"""
+    is_valid_input = False
+    while not is_valid_input:
+        try:
+            number = int(input(user_prompt))
+            is_valid_input = True
+        except ValueError:
+            print("Invalid input; enter a valid number")
+    return number
 
 
 main()
