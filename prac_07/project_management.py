@@ -5,23 +5,23 @@ Actual time:
 """
 from operator import attrgetter
 
-from prac_07.project import Project
-
 import datetime
+
+from prac_07.project import Project
 
 FILENAME = "projects.txt"
 HEADER = ["Name", "Start Date", "Priority", "Cost Estimate", "Completion Percentage"]
-MENU_STRING = """- (L)oad projects  
-- (S)ave projects  
-- (D)isplay projects  
+MENU_STRING = """- (L)oad projects
+- (S)ave projects
+- (D)isplay projects
 - (F)ilter projects by date
-- (A)dd new project  
+- (A)dd new project
 - (U)pdate project
 - (Q)uit"""
 
 
 def main():
-    """Manage a list of projects - display projects, filter, add new projects, update details, and save to a file"""
+    """Manage a project list-display, filter, add new, update details, save to a file"""
     projects = load_projects(FILENAME)
     print(MENU_STRING)
     choice = input(">>> ").upper()
@@ -51,38 +51,37 @@ def main():
 def load_projects(filename):
     """Open project file and store as a list of lists"""
     projects = []
-    in_file = open(filename, 'r')
-    in_file.readline()
-    for line in in_file:
-        line = line.strip()
-        parts = line.split("\t")
-        # print(parts)  #checking
-        parts[2] = int(parts[2])
-        parts[3] = float(parts[3])
-        parts[4] = int(parts[4])
-        # print(parts) #checking
-        date = datetime.datetime.strptime(parts[1], "%d/%m/%Y").date()
-        project = Project(parts[0], date, parts[2], parts[3], parts[4])
-        project2 = Project(parts[0], parts[1], parts[2], parts[3], parts[4])
-        # print(project)  # checking
-        # print(type(project.start_date)) #checking
-        # print(project.start_date) #checking
-        # print(project2.start_date) #checking
-        projects.append(project)
-    in_file.close()
+    with open(filename, 'r', encoding="utf-8-sig") as in_file:
+        in_file.readline()
+        for line in in_file:
+            line = line.strip()
+            parts = line.split("\t")
+            # print(parts)  #checking
+            parts[2] = int(parts[2])
+            parts[3] = float(parts[3])
+            parts[4] = int(parts[4])
+            # print(parts) #checking
+            date = datetime.datetime.strptime(parts[1], "%d/%m/%Y").date()
+            project = Project(parts[0], date, parts[2], parts[3], parts[4])
+            # print(project)  # checking
+            # print(type(project.start_date)) #checking
+            # print(project.start_date) #checking
+            # print(project2.start_date) #checking
+            projects.append(project)
+        # in_file.close()
     return projects
 
 
 def save_projects(save_file, projects):
     """Save list of projects to a file"""
     print(f"V2:{projects}")
-    out_file = open(save_file, 'w')
-    for heading in HEADER:
-        print(heading, file=out_file, end="\t")
-    out_file.write('\n')
-    for project in projects:
-        print(repr(project), file=out_file)
-    out_file.close()
+    with open(save_file, 'w', encoding="utf-8-sig") as out_file:
+        for heading in HEADER:
+            print(heading, file=out_file, end="\t")
+        out_file.write('\n')
+        for project in projects:
+            print(repr(project), file=out_file)
+    # out_file.close()
 
 
 def display_projects(projects):
@@ -121,7 +120,7 @@ def add_new_project(projects):
 
 
 def update_project(projects):
-    """Display a list of projects, get user's choice of project to update, update completion percent &/or priority"""
+    """Get index of project and update completion percent &/or priority"""
     for i, project in enumerate(projects):
         print(f"{i} {project}")
     chosen_index = int(input("Project choice: "))
