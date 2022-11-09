@@ -10,6 +10,7 @@ from prac_07.project import Project
 import datetime
 
 FILENAME = "projects.txt"
+HEADER = ["Name", "Start Date", "Priority", "Cost Estimate", "Completion Percentage"]
 MENU_STRING = """- (L)oad projects  
 - (S)ave projects  
 - (D)isplay projects  
@@ -76,6 +77,9 @@ def save_projects(save_file, projects):
     """Save list of projects to a file"""
     print(f"V2:{projects}")
     out_file = open(save_file, 'w')
+    for heading in HEADER:
+        print(heading, file=out_file, end="\t")
+    out_file.write('\n')
     for project in projects:
         print(repr(project), file=out_file)
     out_file.close()
