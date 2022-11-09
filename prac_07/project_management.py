@@ -7,6 +7,8 @@ from operator import attrgetter
 
 from prac_07.project import Project
 
+import datetime
+
 FILENAME = "projects.txt"
 MENU_STRING = """- (L)oad projects  
 - (S)ave projects  
@@ -57,9 +59,10 @@ def load_projects(filename):
         parts[3] = float(parts[3])
         parts[4] = int(parts[4])
         # print(parts) #checking
-        # TODO Convert start date from string to date format
-        project = Project(parts[0], parts[1], parts[2], parts[3], parts[4])
-        print(project)  # checking
+        date = datetime.datetime.strptime(parts[1], "%d/%m/%Y").date()
+        project = Project(parts[0], date, parts[2], parts[3], parts[4])
+        # print(project)  # checking
+        # print(type(project.start_date)) #checking
         projects.append(project)
     in_file.close()
     return projects
