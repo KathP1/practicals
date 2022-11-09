@@ -44,6 +44,7 @@ def main():
             print("Invalid menu choice")
         print(MENU_STRING)
         choice = input(">>> ").upper()
+    print("Thank you for using custom-built project management software")
 
 
 def load_projects(filename):
@@ -61,8 +62,11 @@ def load_projects(filename):
         # print(parts) #checking
         date = datetime.datetime.strptime(parts[1], "%d/%m/%Y").date()
         project = Project(parts[0], date, parts[2], parts[3], parts[4])
+        project2 = Project(parts[0], parts[1], parts[2], parts[3], parts[4])
         # print(project)  # checking
         # print(type(project.start_date)) #checking
+        # print(project.start_date) #checking
+        # print(project2.start_date) #checking
         projects.append(project)
     in_file.close()
     return projects
@@ -92,7 +96,13 @@ def display_projects(projects):
 
 
 def display_filtered(projects):
-    pass
+    """Gets a threshold date from the user and displays projects with start date >= to that date"""
+    date_string = input("Show projects that start after date (dd/mm/yyyy): ")
+    filter_from_date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+    filtered_projects = [project for project in projects if project.start_date >= filter_from_date]
+    filtered_projects.sort(key=attrgetter("start_date"))
+    for project in filtered_projects:
+        print(project)
 
 
 def add_new_project(projects):
