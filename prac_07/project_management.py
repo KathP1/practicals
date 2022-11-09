@@ -120,14 +120,14 @@ def update_project(projects):
     """Display a list of projects, get user's choice of project to update, update completion percent &/or priority"""
     for i, project in enumerate(projects):
         print(f"{i} {project}")
-    project_to_update = int(input("Project choice: "))
-    print(projects[project_to_update])
+    chosen_index = int(input("Project choice: "))
+    print(projects[chosen_index])
     new_percentage = input("New Percentage: ")
     new_priority = input("New Priority: ")
     if new_percentage != "":
-        projects[project_to_update].completion_percentage = int(new_percentage)
+        projects[chosen_index].completion_percentage = int(new_percentage)
     if new_priority != "":
-        projects[project_to_update].priority = int(new_priority)
+        projects[chosen_index].priority = int(new_priority)
 
 
 main()
