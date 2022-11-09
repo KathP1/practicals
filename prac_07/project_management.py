@@ -32,7 +32,7 @@ def main():
         elif choice == "D":
             display_projects(projects)
         elif choice == "F":
-            pass
+            display_filtered(projects)
         elif choice == "A":
             print("Let's add a new project")
             add_new_project(projects)
@@ -86,6 +86,10 @@ def display_projects(projects):
     print("Completed projects:")
     for project in complete_projects:
         print(project)
+
+
+def display_filtered(projects):
+    pass
 
 
 def add_new_project(projects):
