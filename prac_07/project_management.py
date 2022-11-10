@@ -2,7 +2,7 @@
 CP1404 - Prac 07 - Project Management
 A program to load and save a data file and use a list of Project objects
 Time Estimate:5hrs
-Actual time:
+Actual time: 8hrs
 """
 from operator import attrgetter
 
