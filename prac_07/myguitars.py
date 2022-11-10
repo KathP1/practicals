@@ -11,16 +11,34 @@ def main():
     guitars = []
     in_file = open('guitars.csv', 'r')
     for line in in_file:
-        # print(repr(line))  # debugging
         parts = line.strip().split(',')
-        # print(parts)  # debugging
         guitar = Guitar(parts[0], int(parts[1]), float(parts[2]))
         guitars.append(guitar)
     in_file.close()
+    print("My guitars!")
+    name = input("Name: ")
+    while name != "":
+        year = int(input("Year: "))
+        cost = float(input("Cost: $"))
+        guitar_to_add = Guitar(name, year, cost)
+        guitars.append(guitar_to_add)
+        print(guitar_to_add, "added.")
+        name = input("Name: ")
 
-    # Loop through and display all guitars
-    for guitar in guitars:
-        print(guitar)
+    if guitars:
+        guitars.sort()
+        print("These are my guitars:")
+        for i, guitar in enumerate(guitars, 1):
+            vintage_string = ""
+            if guitar.is_vintage():
+                vintage_string = " (vintage)"
+            print("Guitar {0}: {1.name:>20} ({1.year}), worth ${1.cost:10,.2f}{2}".format(i, guitar, vintage_string))
+    else:
+        print("No guitars")
+
+    with open('guitars.csv', 'w') as out_file:
+        for guitar in guitars:
+            print(repr(guitar), file=out_file)
 
 
 main()
