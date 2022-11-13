@@ -26,7 +26,7 @@ class ConvertMilesApp(App):
         # self.message = ""
         return self.root
 
-    def handle_calculate(self, value):
+    def handle_calculate(self):
         """handle calculation, display result in label """
         result = self.get_valid_miles() * MILES_TO_KM
         self.root.ids.output_label.text = str(f"{result:.3f}")
@@ -35,6 +35,7 @@ class ConvertMilesApp(App):
         """Handle up/down button press, increment the miles value +- 1"""
         value = self.get_valid_miles() + increment
         self.root.ids.input_miles.text = str(value)
+        self.handle_calculate()
 
     def get_valid_miles(self):
         """Get valid number for miles or return 0 if not valid"""
