@@ -2,7 +2,7 @@
 CP1404 Practical 08
 Kivy GUI program to convert miles to kilometers
 Estimated time: 8hrs
-Actual time:
+Actual time: 2.5hrs
 """
 
 from kivy.app import App
