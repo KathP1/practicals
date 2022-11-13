@@ -28,13 +28,22 @@ class ConvertMilesApp(App):
 
     def handle_calculate(self, value):
         """handle calculation, display result in label """
-        result = float(value) * MILES_TO_KM
+        result = self.get_valid_miles() * MILES_TO_KM
         self.root.ids.output_label.text = str(f"{result:.3f}")
 
     def handle_increment(self, increment):
         """Handle up/down button press, increment the miles value +- 1"""
-        value = float(self.root.ids.input_miles.text) + increment
+        value = self.get_valid_miles() + increment
         self.root.ids.input_miles.text = str(value)
+
+    def get_valid_miles(self):
+        """Get valid number for miles or return 0 if not valid"""
+        try:
+            value = float(self.root.ids.input_miles.text)
+            return value
+        except ValueError:
+            return 0
+
 
 
 ConvertMilesApp().run()
