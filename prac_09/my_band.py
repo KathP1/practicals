@@ -1,11 +1,13 @@
 """Band example with list of musicians."""
-from band import Band
-from musician import Musician
-from guitar import Guitar
+from prac_09.band import Band
+from prac_09.musician import Musician
+from prac_09.guitar import Guitar
 
 
 def main():
+    """Test band class"""
     band = Band("Extreme")
+    print(type(band))
     nuno = Musician("Nuno Bettencourt")
     nuno.add(Guitar("Washburn N4", 1990, 2499.95))
     nuno.add(Guitar("Takamine acoustic", 1986, 1200.0))
