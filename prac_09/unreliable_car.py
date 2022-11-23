@@ -20,7 +20,8 @@ class UnreliableCar(Car):
         return f"{super().__str__()}, drove {self.current_distance}km"
 
     def drive(self, distance):
-        """Drive like parent Car but only if a random number between 0 and 100 is less than car's reliability."""
+        """Drive like parent Car but only if a random number
+        between 0 and 100 is less than car's reliability."""
         distance_driven = super().drive(distance)
         if randint(0, 100) < self.reliability:
             self.current_distance += distance_driven
