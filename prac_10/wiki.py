@@ -13,7 +13,6 @@ def main():
         try:
             page = wikipedia.page(search_phrase, auto_suggest=False)
             print(f"Title: {page.title}")
-            page_summary = wikipedia.summary(page)
             print(f"Summary: {wikipedia.summary(page)}")
             print(page.url)
             print("\n")
